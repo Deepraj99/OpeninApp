@@ -7,22 +7,18 @@
 
     <fragment
         android:id="@+id/links"
-        android:name="com.example.openinapp.LinksFragment"
-        android:label="fragment_links"
+        android:name="com.example.openinapp.fragment.LinksFragment"
         tools:layout="@layout/fragment_links" />
     <fragment
         android:id="@+id/courses"
-        android:name="com.example.openinapp.CoursesFragment"
-        android:label="fragment_courses"
+        android:name="com.example.openinapp.fragment.CoursesFragment"
         tools:layout="@layout/fragment_courses" />
     <fragment
         android:id="@+id/campaigns"
-        android:name="com.example.openinapp.CampaignFragment"
-        android:label="fragment_campaign"
+        android:name="com.example.openinapp.fragment.CampaignFragment"
         tools:layout="@layout/fragment_campaign" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.openinapp.ProfileFragment"
-        android:label="fragment_profile"
+        android:name="com.example.openinapp.fragment.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.openinapp.R
@@ -28,10 +29,7 @@ class HomeActivity : AppCompatActivity() {
         val apiRepository = (application as Application).apiRepository
         apiViewModel = ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
 
-        val navController = findNavController(R.id.navController)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.links, R.id.courses, R.id.campaigns, R.id.profile))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.bottomNavigationBar.setupWithNavController(navController)
+        NavigationUI.setupWithNavController(binding.bottomNavigationBar, findNavController(R.id.navController))
 
         apiViewModel.apiResponse.observe(this, Observer {
             when (it) {
