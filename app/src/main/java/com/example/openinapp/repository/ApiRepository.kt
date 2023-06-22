@@ -15,22 +15,12 @@ class ApiRepository(private val apiInterface: ApiInterface) {
     get() = _apiResponseLiveData
 
     suspend fun getApiResponse() {
-//        _apiResponseLiveData.postValue(NetworkResult.Loading())
+        _apiResponseLiveData.postValue(NetworkResult.Loading())
         val apiResponse = apiInterface.getApiResponse()
-
-//        try {
-//            if (apiResponse.isSuccessful  &&  apiResponse.body() != null) {
-//                _apiResponseLiveData.postValue(NetworkResult.Success(apiResponse.body()!!))
-//            }
-//        } catch (JSONException e) {
-//            return null
-//        }
 
         if (apiResponse.isSuccessful  &&  apiResponse.body() != null) {
             _apiResponseLiveData.postValue(NetworkResult.Success(apiResponse.body()!!))
         } else if (apiResponse.errorBody() != null) {
-//            val errorObj = JSONObject(apiResponse.errorBody()!!.charStream().readText())
-//            _apiResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("message: ")))
             val errorObj = JSONObject(apiResponse.errorBody()!!.charStream().readText())
             _apiResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
 //            _apiResponseLiveData.postValue(NetworkResult.Error("Something went wrong!!"))
