@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.openinapp.R
 import com.example.openinapp.databinding.ActivityHomeBinding
 import com.example.openinapp.utils.NetworkResult
@@ -13,10 +17,6 @@ import com.example.openinapp.viewModel.ApiViewModel
 import com.example.openinapp.viewModel.ApiViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
-//    init {
-//        System.loadLibrary("keys")
-//    }
-//    external fun getToken(): String
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var apiViewModel: ApiViewModel
@@ -24,12 +24,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        Log.d("API_KEY ", getToken())
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         val apiRepository = (application as Application).apiRepository
         apiViewModel = ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
+
+        val navController = findNavController(R.id.navController)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.links, R.id.courses, R.id.campaigns, R.id.profile))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.bottomNavigationBar.setupWithNavController(navController)
 
         apiViewModel.apiResponse.observe(this, Observer {
             when (it) {
