@@ -175,6 +175,42 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tvViewAnalytics" />
 
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_50sdp"
+                        app:tabMode="fixed"
+                        app:tabTextAppearance="@style/TabLayoutTextAppearanceUnselected"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        app:tabIndicatorGravity="stretch"
+                        app:tabIndicatorAnimationMode="elastic"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabIndicatorColor="@null"
+                        app:tabIndicator="@drawable/tab_indicator"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        app:layout_constraintTop_toBottomOf="@id/btnViewAnalytics"
+                        app:layout_constraintEnd_toStartOf="@+id/ivSearch"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivSearch"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/ic_search"
+                        android:layout_marginEnd="@dimen/_18sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tabLayout"
+                        app:layout_constraintTop_toTopOf="@+id/tabLayout"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
