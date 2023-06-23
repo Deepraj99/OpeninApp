@@ -4,8 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
     app:cardCornerRadius="@dimen/_10sdp"
-    android:layout_margin="@dimen/_18sdp">
+    app:cardElevation="0dp"
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    android:layout_marginBottom="@dimen/_15sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,8 +16,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ivCard"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="@dimen/_38sdp"
             android:layout_marginTop="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -25,6 +28,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:src="@color/gray" />
         </androidx.cardview.widget.CardView>
 
@@ -33,7 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_11ssp"
+            android:fontFamily="@font/figtree"
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/_3sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -45,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/figtree"
             android:textColor="@color/gray"
             android:layout_marginBottom="@dimen/_3sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -58,8 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="145"
+            android:fontFamily="@font/figtree_bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_11ssp"
             app:layout_constraintBottom_toBottomOf="@+id/tvLinkName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvLinkName" />
@@ -69,7 +76,8 @@
             android:layout_height="wrap_content"
             android:text="@string/clicks"
             android:textColor="@color/gray"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/figtree"
             android:layout_marginEnd="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="@+id/tvDate"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,8 +88,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/item_dotted_border"
             android:orientation="horizontal"
-            android:paddingVertical="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivCard">
@@ -92,14 +100,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_weight="3"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text="@string/app_name"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/_14ssp" />
+                android:textColor="@color/blue_light"
+                android:textSize="@dimen/_11ssp" />
 
             <ImageView
                 android:id="@+id/ivCopy"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:src="@drawable/ic_copy" />

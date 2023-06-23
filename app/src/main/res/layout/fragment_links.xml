@@ -174,7 +174,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_36sdp"
                         android:layout_marginHorizontal="@dimen/_15sdp"
-                        android:background="@drawable/item_border"
+                        android:background="@drawable/item_boarder"
                         app:layout_constraintBottom_toBottomOf="@+id/tvViewAnalytics"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -213,9 +213,127 @@
                         android:id="@+id/viewPager2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+                    <ImageView
+                        android:id="@+id/ivViewAllLinks"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@drawable/ic_link"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvViewAllLinks"
+                        app:layout_constraintEnd_toStartOf="@+id/tvViewAllLinks"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toEndOf="@+id/recyclerView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvViewAllLinks" />
+
+                    <TextView
+                        android:id="@+id/tvViewAllLinks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/figtree_bold"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:text="@string/view_all_links"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/ivViewAllLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+
+                    <View
+                        android:id="@+id/btnViewAllLinks"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_36sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:background="@drawable/item_boarder"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvViewAllLinks"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvViewAllLinks" />
+
+                    <View
+                        android:id="@+id/btnTalkWithUs"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:background="@drawable/item_boarder_green"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnViewAllLinks" />
+
+                    <ImageView
+                        android:id="@+id/ivWhatsapp"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:src="@drawable/ic_whatsapp"
+                        android:layout_marginStart="@dimen/_25sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/btnTalkWithUs"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnTalkWithUs"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_bold"
+                        android:text="@string/talk_with_us"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnTalkWithUs"
+                        app:layout_constraintStart_toEndOf="@+id/ivWhatsapp"
+                        app:layout_constraintTop_toTopOf="@+id/btnTalkWithUs" />
+
+                    <View
+                        android:id="@+id/faq"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:background="@drawable/item_boarder_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnTalkWithUs" />
+
+                    <ImageView
+                        android:id="@+id/ivFaq"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:src="@drawable/ic_faq"
+                        android:layout_marginStart="@dimen/_25sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/faq"
+                        app:layout_constraintBottom_toBottomOf="@+id/faq"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/figtree_bold"
+                        android:text="Frequently Asked Questions"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/faq"
+                        app:layout_constraintStart_toEndOf="@+id/ivFaq"
+                        app:layout_constraintTop_toTopOf="@+id/faq" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/faq"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>

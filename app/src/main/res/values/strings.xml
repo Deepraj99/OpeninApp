@@ -9,4 +9,6 @@
     <string name="dashboard">Dashboard</string>
     <string name="view_analytics">View Analytics</string>
     <string name="clicks">Clicks</string>
+    <string name="view_all_links">View all Links</string>
+    <string name="talk_with_us">Talk with us</string>
 </resources>
