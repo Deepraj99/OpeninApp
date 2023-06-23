@@ -45,7 +45,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            app:layout_anchor="@id/bottomAppBar" />
+            android:backgroundTint="@color/blue_light"
+            app:backgroundTint="@color/blue_light"
+            app:tint="@android:color/white"
+            app:layout_anchor="@id/bottomAppBar"  />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

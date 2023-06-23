@@ -97,7 +97,7 @@
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:src="@drawable/hand_wave"
+                        android:src="@drawable/wave_hand"
                         app:layout_constraintBottom_toBottomOf="@+id/tvPerson"
                         app:layout_constraintStart_toEndOf="@+id/tvPerson"
                         app:layout_constraintTop_toTopOf="@+id/tvPerson" />

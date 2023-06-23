@@ -1,6 +1,5 @@
 package com.example.openinapp.api
 
-import com.example.openinapp.utils.Constant.Companion.API_KEY
 import com.example.openinapp.utils.Constant.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

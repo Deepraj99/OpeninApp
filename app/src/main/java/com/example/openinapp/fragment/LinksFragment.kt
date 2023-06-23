@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,12 +24,19 @@ import com.example.openinapp.utils.NetworkResult
 import com.example.openinapp.viewModel.ApiViewModel
 import com.example.openinapp.viewModel.ApiViewModelFactory
 import com.google.android.material.tabs.TabLayout
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class LinksFragment : Fragment() {
 
     private lateinit var apiViewModel: ApiViewModel
     private lateinit var fragmentPageAdapter: FragmentPageAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var tvGreeting: TextView
     private val list = ArrayList<RvModel>()
 
     @SuppressLint("MissingInflatedId")
@@ -37,17 +46,50 @@ class LinksFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_links, container, false)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
-        val viewPager2 = view.findViewById<ViewPager2>(R.id.viewPager2)
+        init(view)
+        tabLayout()
+        getLocalTime()
 
-        val apiRepository = (activity!!.applicationContext as Application).apiRepository
-        apiViewModel = ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        apiViewModel.apiResponse.observe(this, Observer {
+            when (it) {
+                is NetworkResult.Success -> {
+                    progressBar.visibility = View.GONE
+                    list.clear()
+                    list.add(RvModel(R.drawable.ic_todays_click, it.data!!.today_clicks.toString(), "Today's click"))
+                    list.add(RvModel(R.drawable.ic_top_location, it.data.top_location.toString(), "Top Location"))
+                    list.add(RvModel(R.drawable.ic_top_source, it.data.top_source, "Top Source"))
+                    recyclerView.adapter = RvAdapter(activity!!.applicationContext, list)
+                }
+                is NetworkResult.Error -> {
+                    Log.d("ERROR: ", it.message.toString())
+                }
+                else -> {
+                    progressBar.visibility = View.VISIBLE
+                }
+            }
+        })
+        return view
+    }
 
-        fragmentPageAdapter = FragmentPageAdapter(parentFragmentManager, lifecycle)
+    @SuppressLint("SetTextI18n")
+    private fun getLocalTime() {
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
 
+        when (hour) {
+            in 5..12 -> {
+                tvGreeting.text = "Good morning"
+            }
+            in 13 downTo 5 -> {
+                tvGreeting.text = "Good afternoon"
+            }
+            else -> {
+                tvGreeting.text = "Good evening"
+            }
+        }
+    }
+
+    private fun tabLayout() {
         tabLayout.addTab(tabLayout.newTab().setText("Top Links"))
         tabLayout.addTab(tabLayout.newTab().setText("Recent Links"))
         viewPager2.adapter = fragmentPageAdapter
@@ -71,25 +113,17 @@ class LinksFragment : Fragment() {
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         })
+    }
+    private fun init(view: View) {
+        recyclerView = view.findViewById(R.id.recyclerView)
+        progressBar = view.findViewById(R.id.progressBar)
+        tabLayout = view.findViewById(R.id.tabLayout)
+        viewPager2 = view.findViewById(R.id.viewPager2)
+        tvGreeting = view.findViewById(R.id.tvGreeting)
 
-        apiViewModel.apiResponse.observe(this, Observer {
-            when (it) {
-                is NetworkResult.Success -> {
-                    progressBar.visibility = View.GONE
-                    list.clear()
-                    list.add(RvModel(R.drawable.ic_todays_click, it.data!!.today_clicks.toString(), "Today's click"))
-                    list.add(RvModel(R.drawable.ic_top_location, it.data.top_location.toString(), "Top Location"))
-                    list.add(RvModel(R.drawable.ic_top_source, it.data.top_source, "Top Source"))
-                    recyclerView.adapter = RvAdapter(activity!!.applicationContext, list)
-                }
-                is NetworkResult.Error -> {
-                    Log.d("ERROR: ", it.message.toString())
-                }
-                else -> {
-                    progressBar.visibility = View.VISIBLE
-                }
-            }
-        })
-        return view
+        val apiRepository = (activity!!.applicationContext as Application).apiRepository
+        apiViewModel = ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        fragmentPageAdapter = FragmentPageAdapter(parentFragmentManager, lifecycle)
     }
 }

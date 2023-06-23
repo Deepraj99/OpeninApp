@@ -3,15 +3,21 @@ package com.example.openinapp.adapter
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.openinapp.R
 import com.example.openinapp.models.TopLink
+import com.example.openinapp.utils.Constant.Companion.dateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class TopLinksAdapter(private val context: Context, private val list: List<TopLink>) : RecyclerView.Adapter<TopLinksAdapter.ViewHolder>() {
 
@@ -33,11 +39,16 @@ class TopLinksAdapter(private val context: Context, private val list: List<TopLi
         return list.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         Glide.with(context).load(list[position].original_image).into(holder.image)
-        holder.tvLinkName.text = list[position].app
-        holder.tvDate.text = list[position].created_at
+        holder.tvLinkName.text = list[position].app.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.getDefault()
+            ) else it.toString()
+        }
+        holder.tvDate.text = dateFormat(list[position].created_at)
         holder.tvNoOfClicks.text = list[position].total_clicks.toString()
         holder.tvUrl.text = list[position].web_link
         holder.ivCopy.setOnClickListener { (context).copyToClipboard(list[position].web_link) }

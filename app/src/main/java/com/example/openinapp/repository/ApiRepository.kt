@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.openinapp.api.ApiInterface
 import com.example.openinapp.models.ApiDataModel
-import com.example.openinapp.utils.Constant.Companion.API_KEY
 import com.example.openinapp.utils.NetworkResult
 import org.json.JSONObject
 
