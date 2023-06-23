@@ -76,6 +76,7 @@ class LinksFragment : Fragment() {
             when (it) {
                 is NetworkResult.Success -> {
                     progressBar.visibility = View.GONE
+                    list.clear()
                     list.add(RvModel(R.drawable.ic_todays_click, it.data!!.today_clicks.toString(), "Today's click"))
                     list.add(RvModel(R.drawable.ic_top_location, it.data.top_location.toString(), "Top Location"))
                     list.add(RvModel(R.drawable.ic_top_source, it.data.top_source, "Top Source"))

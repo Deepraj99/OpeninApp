@@ -15,8 +15,8 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_124sdp"
-            android:background="@color/blue"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@color/blue_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,18 +26,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_18sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
             android:text="@string/dashboard"
+            android:fontFamily="@font/figtree_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/_20ssp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageBackground"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
             android:src="@drawable/settings"
             android:layout_marginEnd="@dimen/_18sdp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
@@ -48,8 +48,9 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
             android:layout_marginTop="-30dp"
+            android:backgroundTint="@color/white10"
             app:layout_constraintTop_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -68,11 +69,12 @@
                         android:id="@+id/tvGreeting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_18sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_25sdp"
+                        android:fontFamily="@font/figtree"
                         android:text="Good Morning"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,32 +82,34 @@
                         android:id="@+id/tvPerson"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_18sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:fontFamily="@font/figtree_bold"
                         android:text="Ajit Mehra"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_24ssp"
+                        android:textSize="@dimen/_18ssp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvGreeting" />
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="@dimen/_28sdp"
-                        android:layout_height="@dimen/_28sdp"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
                         android:layout_marginStart="@dimen/_8sdp"
                         android:src="@drawable/hand_wave"
                         app:layout_constraintBottom_toBottomOf="@+id/tvPerson"
                         app:layout_constraintStart_toEndOf="@+id/tvPerson"
-                        app:layout_constraintTop_toBottomOf="@+id/tvGreeting" />
+                        app:layout_constraintTop_toTopOf="@+id/tvPerson" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView2"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_200sdp"
-                        android:layout_marginHorizontal="@dimen/_18sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_height="@dimen/_156sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:backgroundTint="@color/gray"
+                        app:cardCornerRadius="@dimen/_5sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvPerson" />
@@ -114,8 +118,8 @@
                         android:id="@+id/recyclerView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_18sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:scrollbars="none"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
@@ -136,8 +140,8 @@
 
                     <ImageView
                         android:id="@+id/ivAnalytics"
-                        android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:src="@drawable/ic_analytics"
                         app:layout_constraintBottom_toBottomOf="@+id/tvViewAnalytics"
                         app:layout_constraintEnd_toStartOf="@+id/tvViewAnalytics"
@@ -152,12 +156,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_18sdp"
-                        android:layout_marginTop="@dimen/_140sdp"
+                        android:layout_marginTop="@dimen/_130sdp"
+                        android:fontFamily="@font/figtree_bold"
                         android:gravity="center"
                         android:paddingVertical="@dimen/_10sdp"
                         android:text="@string/view_analytics"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -167,9 +172,9 @@
                     <View
                         android:id="@+id/btnViewAnalytics"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="@dimen/_36sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
                         android:background="@drawable/item_border"
-                        android:layout_marginHorizontal="@dimen/_18sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvViewAnalytics"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -178,29 +183,30 @@
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/_50sdp"
-                        app:tabMode="fixed"
-                        app:tabTextAppearance="@style/TabLayoutTextAppearanceUnselected"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        app:tabIndicatorGravity="stretch"
-                        app:tabIndicatorAnimationMode="elastic"
-                        app:tabSelectedTextColor="@color/white"
-                        app:tabIndicatorColor="@null"
-                        app:tabIndicator="@drawable/tab_indicator"
+                        android:layout_height="@dimen/_35sdp"
                         android:layout_marginHorizontal="@dimen/_18sdp"
-                        app:layout_constraintTop_toBottomOf="@id/btnViewAnalytics"
+                        android:layout_marginTop="@dimen/_35sdp"
                         app:layout_constraintEnd_toStartOf="@+id/ivSearch"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btnViewAnalytics"
+                        app:tabIndicator="@drawable/tab_indicator"
+                        app:tabIndicatorAnimationMode="elastic"
+                        app:tabIndicatorColor="@null"
+                        app:tabIndicatorGravity="stretch"
+                        app:tabMode="fixed"
+                        android:backgroundTint="@color/white10"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextAppearance="@style/TabLayoutTextAppearanceSelected" />
 
                     <ImageView
                         android:id="@+id/ivSearch"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginEnd="@dimen/_15sdp"
                         android:src="@drawable/ic_search"
-                        android:layout_marginEnd="@dimen/_18sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/tabLayout"
-                        app:layout_constraintTop_toTopOf="@+id/tabLayout"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tabLayout" />
 
 
                     <androidx.viewpager2.widget.ViewPager2
