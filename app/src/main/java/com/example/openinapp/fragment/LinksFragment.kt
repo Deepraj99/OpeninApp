@@ -1,6 +1,7 @@
 package com.example.openinapp.fragment
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +23,13 @@ import com.example.openinapp.models.RvModel
 import com.example.openinapp.utils.NetworkResult
 import com.example.openinapp.viewModel.ApiViewModel
 import com.example.openinapp.viewModel.ApiViewModelFactory
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.tabs.TabLayout
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class LinksFragment : Fragment() {
@@ -37,6 +41,7 @@ class LinksFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
     private lateinit var tvGreeting: TextView
+    private lateinit var lineChart: LineChart
     private val list = ArrayList<RvModel>()
 
     @SuppressLint("MissingInflatedId")
@@ -49,6 +54,8 @@ class LinksFragment : Fragment() {
         init(view)
         tabLayout()
         getLocalTime()
+        lineChart()
+
 
         apiViewModel.apiResponse.observe(this, Observer {
             when (it) {
@@ -70,13 +77,30 @@ class LinksFragment : Fragment() {
         })
         return view
     }
+    private fun lineChart() {
+        val information: ArrayList<Entry> = ArrayList()
+        information.add(Entry(0F, 30F))
+        information.add(Entry(25F, 60F))
+        information.add(Entry(50F, 10F))
+        information.add(Entry(75F, 40F))
+        information.add(Entry(80F, 65F))
+        information.add(Entry(100F, 25F))
+
+        val lineDataSet = LineDataSet(information, "Information")
+        lineDataSet.setColors(*ColorTemplate.PASTEL_COLORS)
+        lineDataSet.valueTextColor = Color.BLACK
+        lineDataSet.valueTextSize = 10f
+
+        val lineData = LineData(lineDataSet)
+        lineChart.data = lineData
+        lineChart.animateY(2000)
+    }
 
     @SuppressLint("SetTextI18n")
     private fun getLocalTime() {
         val c = Calendar.getInstance()
-        val hour = c.get(Calendar.HOUR_OF_DAY)
 
-        when (hour) {
+        when (c.get(Calendar.HOUR_OF_DAY)) {
             in 5..12 -> {
                 tvGreeting.text = "Good morning"
             }
@@ -120,6 +144,7 @@ class LinksFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayout)
         viewPager2 = view.findViewById(R.id.viewPager2)
         tvGreeting = view.findViewById(R.id.tvGreeting)
+        lineChart = view.findViewById(R.id.lineChart)
 
         val apiRepository = (activity!!.applicationContext as Application).apiRepository
         apiViewModel = ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
